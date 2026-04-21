@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — Al Jazira Club Official Store</title>
+  <script>try{
+    var h=document.documentElement;
+    h.setAttribute('data-theme',localStorage.getItem('ajc-theme')||'home');
+    var l=localStorage.getItem('ajc-lang')||'en';
+    h.setAttribute('data-lang',l);
+    h.setAttribute('lang',l);
+    h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+  }catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="lang.css" />
+  <script src="lang.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #D03239;
+      --gold-dark: #a82026;
+      --bronze: #B08759;
+      --bronze-dark: #8f6c43;
+      --dark: #1E1B1A;
+      --charcoal: #2a2724;
+      --mid: #888;
+      --light: #f5f5f5;
+      --border: #e8e8e8;
+      --white: #ffffff;
+      --font: 'Barlow', sans-serif;
+      --font-display: 'Barlow Condensed', 'Barlow', sans-serif;
+
+      /* surfaces (theme-switchable) */
+      --surface: #ffffff;
+      --surface-nav: rgba(255,255,255,0.96);
+      --surface-elevated: #f5f5f5;
+      --ink: #1E1B1A;
+      --ink-muted: #888;
+      --rule: #e8e8e8;
+    }
+
+    html[data-theme="home"] {
+      --surface: #ffffff;
+      --surface-nav: rgba(255,255,255,0.96);
+      --surface-elevated: #f5f5f5;
+      --ink: #1E1B1A;
+      --ink-muted: #888;
+      --rule: #e8e8e8;
+    }
+
+    html[data-theme="away"] {
+      --surface: #15120f;
+      --surface-nav: rgba(15,13,12,0.92);
+      --surface-elevated: #221e1a;
+      --ink: #f4eee5;
+      --ink-muted: rgba(244,238,229,0.45);
+      --rule: rgba(176,135,89,0.18);
+      --light: #221e1a;
+      --border: rgba(244,238,229,0.08);
+      --mid: rgba(244,238,229,0.45);
+      --dark: #f4eee5;
+      --charcoal: #e5dccb;
+    }
+
+    html[data-theme="third"] {
+      --surface: #ece6d9;
+      --surface-nav: rgba(236,230,217,0.94);
+      --surface-elevated: #e0d9c7;
+      --ink: #2a2216;
+      --ink-muted: #7a6d52;
+      --rule: rgba(176,135,89,0.28);
+      --light: #e0d9c7;
+      --border: rgba(42,34,22,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--surface);
+      color: var(--ink);
+      overflow-x: hidden;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    /* ─── ANNOUNCEMENT BAR ─── */
+    .announcement {
+      background: var(--dark);
+      text-align: center;
+      padding: 11px 20px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: var(--bronze);
+      border-bottom: 1px solid rgba(176,135,89,0.22);
+    }
+    .announcement .sep {
+      color: rgba(176,135,89,0.45);
+      margin: 0 14px;
+      font-weight: 400;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--surface-nav);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+
+    .nav-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      background: #1E1B1A;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px var(--bronze), inset 0 0 0 3px #1E1B1A, inset 0 0 0 4px rgba(176,135,89,0.35);
+    }
+
+    .logo-badge::after {
+      content: 'AJC';
+      color: var(--bronze);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-text strong {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.15s;
+    }
+
+    .nav-icon-btn:hover { background: var(--light); }
+
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .cart-btn:hover { background: var(--charcoal); }
+
+    .cart-count {
+      background: var(--gold);
+      color: var(--white);
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-cats {
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-cats::-webkit-scrollbar { display: none; }
+
+    .nav-cat {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      padding: 16px 22px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-cat:hover { color: var(--dark); border-color: var(--bronze); }
+    .nav-cat.active { color: var(--dark); border-color: var(--gold); }
+
+    /* ─── BREADCRUMB ─── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--mid);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb a {
+      color: var(--mid);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .breadcrumb a:hover { color: var(--dark); }
+
+    .breadcrumb-sep { opacity: 0.4; }
+
+    .breadcrumb-current { color: var(--dark); font-weight: 600; }
+
+    /* ─── PRODUCT DETAIL LAYOUT ─── */
+    .product-detail-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 48px 80px;
+    }
+
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* ─── IMAGE PANEL ─── */
+    .product-detail-img-wrap {
+      position: sticky;
+      top: 100px;
+    }
+
+    .product-detail-img {
+      aspect-ratio: 3/4;
+      background: var(--light);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-detail-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-detail-sale-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #ff3b30;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 7px 14px;
+      border-radius: 100px;
+    }
+
+    .product-detail-new-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 7px 14px;
+      border-radius: 2px;
+    }
+
+    /* ─── INFO PANEL ─── */
+    .product-detail-info {
+      padding-top: 8px;
+    }
+
+    .product-detail-category {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 10px;
+    }
+
+    .product-detail-name {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 3.8vw, 54px);
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .product-detail-price-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .detail-price-current {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    .detail-price-original {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: line-through;
+    }
+
+    .detail-price-save {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ff3b30;
+      background: rgba(255,59,48,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .product-detail-desc {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    /* ─── DIVIDER ─── */
+    .info-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 24px;
+    }
+
+    /* ─── SIZE SELECTOR ─── */
+    .selector-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .size-options {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .size-btn {
+      min-width: 52px;
+      height: 46px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(12px) saturate(1.4);
+      -webkit-backdrop-filter: blur(12px) saturate(1.4);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--ink);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s, box-shadow 0.25s;
+      padding: 0 14px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.8),
+        inset 0 -1px 0 rgba(0,0,0,0.04);
+    }
+
+    .size-btn:hover {
+      border-color: var(--bronze);
+      background: rgba(176,135,89,0.06);
+    }
+
+    .size-btn.selected {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%),
+        var(--ink);
+      color: var(--surface);
+      border-color: var(--ink);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        inset 0 -1px 0 rgba(0,0,0,0.35),
+        0 4px 14px -4px rgba(30,27,26,0.3);
+    }
+    html[data-theme="away"] .size-btn {
+      background: rgba(244,238,229,0.04);
+      color: var(--ink);
+      box-shadow: inset 0 1px 0 rgba(244,238,229,0.1), inset 0 -1px 0 rgba(0,0,0,0.3);
+    }
+    html[data-theme="away"] .size-btn.selected {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 50%),
+        var(--bronze);
+      color: #1E1B1A;
+      border-color: var(--bronze);
+    }
+
+    /* ─── QUANTITY STEPPER ─── */
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .qty-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(12px) saturate(1.4);
+      -webkit-backdrop-filter: blur(12px) saturate(1.4);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.8),
+        inset 0 -1px 0 rgba(0,0,0,0.04);
+    }
+    html[data-theme="away"] .qty-stepper { background: rgba(244,238,229,0.04); box-shadow: inset 0 1px 0 rgba(244,238,229,0.1), inset 0 -1px 0 rgba(0,0,0,0.3); }
+
+    .qty-stepper-btn {
+      width: 44px;
+      height: 46px;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font);
+    }
+
+    .qty-stepper-btn:hover { background: rgba(176,135,89,0.1); }
+
+    .qty-stepper-val {
+      width: 44px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      height: 44px;
+      line-height: 44px;
+    }
+
+    .qty-label {
+      font-size: 12px;
+      color: var(--mid);
+      font-weight: 500;
+    }
+
+    /* ─── ADD TO BAG BTN (liquid glass red) ─── */
+    .add-to-bag-btn {
+      width: 100%;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 2px;
+      padding: 18px 24px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 52%),
+        linear-gradient(180deg, #d9444b 0%, #D03239 45%, #b42830 100%);
+      backdrop-filter: blur(20px) saturate(1.6);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.42),
+        inset 0 -1px 0 rgba(0,0,0,0.28),
+        0 12px 36px -10px rgba(208,50,57,0.55);
+      transition: transform 0.2s ease, filter 0.2s, box-shadow 0.25s;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .add-to-bag-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 140% 80% at 50% -40%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 60%);
+      pointer-events: none;
+    }
+    .add-to-bag-btn > * { position: relative; }
+
+    .add-to-bag-btn:hover {
+      filter: brightness(1.06);
+      transform: translateY(-2px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.55),
+        inset 0 -1px 0 rgba(0,0,0,0.3),
+        0 16px 44px -12px rgba(208,50,57,0.75);
+    }
+    .add-to-bag-btn:active { transform: translateY(0); }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 13px;
+      font-weight: 600;
+      transition: color 0.15s;
+      margin-bottom: 36px;
+    }
+
+    .back-link:hover { color: var(--dark); }
+
+    /* ─── PRODUCT FEATURES LIST ─── */
+    .product-features {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .product-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .product-feature-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── RELATED PRODUCTS ─── */
+    .related-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .related-header {
+      margin-bottom: 32px;
+    }
+
+    .related-title {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+
+    .related-sub {
+      font-size: 14px;
+      color: var(--mid);
+      margin-top: 6px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* ─── PRODUCT CARD (same as index) ─── */
+    .product-card {
+      cursor: pointer;
+    }
+
+    .product-img {
+      aspect-ratio: 3/4;
+      background: var(--light);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-img { transform: scale(1.01); }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-img img { transform: scale(1.06); }
+
+    .product-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 2px;
+    }
+
+    .product-badge.sale { background: #ff3b30; color: #fff; }
+
+    .product-wishlist {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(14px) saturate(1.8);
+      -webkit-backdrop-filter: blur(14px) saturate(1.8);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.25s, transform 0.25s, background 0.2s;
+      cursor: pointer;
+      font-size: 15px;
+      color: #1E1B1A;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        inset 0 -1px 0 rgba(0,0,0,0.05),
+        0 6px 16px -6px rgba(30,27,26,0.25);
+    }
+
+    .product-card:hover .product-wishlist { opacity: 1; transform: translateY(0); }
+    .product-wishlist:hover { background: rgba(255,255,255,0.8); color: var(--gold); }
+
+    .product-quick-add {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      background: rgba(15,13,12,0.55);
+      backdrop-filter: blur(18px) saturate(1.8);
+      -webkit-backdrop-filter: blur(18px) saturate(1.8);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: var(--white);
+      border-radius: 2px;
+      padding: 13px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s, transform 0.25s, background 0.2s;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        inset 0 -1px 0 rgba(0,0,0,0.35),
+        0 10px 24px -10px rgba(0,0,0,0.5);
+    }
+
+    .product-card:hover .product-quick-add {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-quick-add:hover {
+      background: rgba(208,50,57,0.7);
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .product-category {
+      font-size: 12px;
+      color: var(--mid);
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .price-current {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .price-original {
+      font-size: 13px;
+      color: var(--mid);
+      text-decoration: line-through;
+    }
+
+    .price-save {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ff3b30;
+    }
+
+    /* ─── NEWSLETTER ─── */
+    .newsletter-section {
+      background: var(--dark);
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    .newsletter-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .newsletter-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .newsletter-title {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 0;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .newsletter-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 32px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 14px 22px;
+      font-family: var(--font);
+      font-size: 14px;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+    .newsletter-input:focus { border-color: var(--gold); }
+
+    .newsletter-submit {
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 14px 24px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .newsletter-submit:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080808;
+      padding: 60px 48px 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo-badge {
+      width: 36px;
+      height: 36px;
+      background: var(--bronze);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 900;
+      color: var(--dark);
+      letter-spacing: 0.3px;
+    }
+
+    .footer-logo-text {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.3px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 260px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .social-link:hover { background: var(--gold); color: var(--white); }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    .payment-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .payment-icon {
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── CART DRAWER ─── */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 400;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: 420px;
+      max-width: 100vw;
+      background: var(--white);
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+    }
+    .cart-drawer.open { transform: translateX(0); }
+
+    .cart-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 24px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-drawer-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    .cart-close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      color: var(--dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .cart-close-btn:hover { background: var(--light); }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 24px;
+    }
+
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 12px;
+      color: var(--mid);
+    }
+    .cart-empty-icon { font-size: 48px; opacity: 0.4; }
+    .cart-empty p { font-size: 14px; font-weight: 500; }
+
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-item:last-child { border-bottom: none; }
+
+    .cart-item-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: var(--light);
+      flex-shrink: 0;
+    }
+
+    .cart-item-info { flex: 1; }
+    .cart-item-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .cart-item-cat {
+      font-size: 11px;
+      color: var(--mid);
+      margin-bottom: 10px;
+    }
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .qty-btn {
+      width: 26px; height: 26px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      background: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .qty-btn:hover { background: var(--light); border-color: var(--dark); }
+    .qty-num { font-size: 13px; font-weight: 700; min-width: 16px; text-align: center; }
+
+    .cart-item-price {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--dark);
+      align-self: flex-start;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 16px;
+      align-self: flex-start;
+      padding: 2px;
+      transition: color 0.15s;
+    }
+    .cart-item-remove:hover { color: #ff3b30; }
+
+    .cart-footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 24px 28px;
+    }
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .cart-subtotal-label { font-size: 13px; color: var(--mid); font-weight: 500; }
+    .cart-subtotal-amount { font-size: 20px; font-weight: 900; color: var(--dark); }
+    .cart-checkout-btn {
+      width: 100%;
+      background: var(--dark);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: background 0.2s;
+      margin-bottom: 10px;
+    }
+    .cart-checkout-btn:hover { background: var(--charcoal); }
+    .cart-continue-btn {
+      width: 100%;
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mid);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .cart-continue-btn:hover { border-color: var(--dark); color: var(--dark); }
+
+    /* ─── TOAST ─── */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--dark);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 100px;
+      z-index: 600;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast .toast-gold { color: var(--gold); }
+
+    /* ─── SEARCH OVERLAY ─── */
+    .search-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 300;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 120px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .search-overlay.open { opacity: 1; pointer-events: all; }
+    .search-box {
+      background: var(--white);
+      border-radius: 16px;
+      width: 600px;
+      max-width: 90vw;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+      transform: translateY(-10px);
+      transition: transform 0.25s ease;
+    }
+    .search-overlay.open .search-box { transform: translateY(0); }
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .search-input-wrap svg { color: var(--mid); flex-shrink: 0; }
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: var(--font);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .search-input::placeholder { color: #ccc; }
+    .search-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--mid);
+      font-size: 20px;
+      padding: 4px;
+    }
+    .search-results {
+      padding: 16px 24px 20px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .search-result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-item:hover { opacity: 0.75; }
+    .search-result-img {
+      width: 44px; height: 44px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: var(--light);
+      flex-shrink: 0;
+    }
+    .search-result-name { font-size: 13px; font-weight: 600; color: var(--dark); }
+    .search-result-price { font-size: 12px; color: var(--mid); margin-top: 2px; }
+    .search-no-results { font-size: 14px; color: var(--mid); padding: 16px 0; }
+
+    /* ─── NOT FOUND STATE ─── */
+    .not-found {
+      text-align: center;
+      padding: 120px 48px;
+    }
+
+    .not-found h2 {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .not-found p {
+      color: var(--mid);
+      margin-bottom: 24px;
+    }
+
+    /* ─── KIT THEME TOGGLE (nav) ─── */
+    .kit-theme {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      margin-right: 6px;
+      background: rgba(127,127,127,0.08);
+      border: 1px solid var(--rule);
+      border-radius: 100px;
+      transition: background 0.3s;
+    }
+    .kit-theme-btn {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: transparent;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .kit-theme-btn[data-mode="home"] { background: #D03239; color: #fff; }
+    .kit-theme-btn[data-mode="away"] { background: #1E1B1A; color: #B08759; }
+    .kit-theme-btn[data-mode="third"] { background: #d9d2c5; color: #2a2216; }
+    .kit-theme-btn::after {
+      content: attr(data-label);
+      color: inherit;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .kit-theme-btn.active {
+      transform: scale(1.15);
+      box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--gold);
+    }
+    .kit-theme-btn.active::after,
+    .kit-theme-btn:hover::after { opacity: 1; }
+
+    /* AWAY mode overrides */
+    html[data-theme="away"] .product-name,
+    html[data-theme="away"] .price-current,
+    html[data-theme="away"] .related-title,
+    html[data-theme="away"] .product-detail-name,
+    html[data-theme="away"] .detail-price-current,
+    html[data-theme="away"] .logo-text strong,
+    html[data-theme="away"] .link-all,
+    html[data-theme="away"] .nav-icon-btn,
+    html[data-theme="away"] .breadcrumb-current,
+    html[data-theme="away"] .qty-stepper-val,
+    html[data-theme="away"] .cart-subtotal-amount { color: var(--ink); }
+    html[data-theme="away"] .nav-cat { color: rgba(244,238,229,0.55); }
+    html[data-theme="away"] .nav-cat:hover,
+    html[data-theme="away"] .nav-cat.active { color: var(--ink); }
+    html[data-theme="away"] .product-img,
+    html[data-theme="away"] .product-detail-gallery-main,
+    html[data-theme="away"] .product-detail-thumb { background: var(--surface-elevated); }
+    html[data-theme="away"] .product-wishlist { background: rgba(244,238,229,0.9); color: #1E1B1A; }
+    html[data-theme="away"] .product-quick-add { background: #f4eee5; color: #1E1B1A; }
+    html[data-theme="away"] .cart-btn { background: var(--gold); color: #fff; }
+    html[data-theme="away"] .cart-btn:hover { background: var(--gold-dark); }
+    html[data-theme="away"] .announcement { border-bottom-color: rgba(176,135,89,0.3); }
+    html[data-theme="away"] .divider,
+    html[data-theme="away"] .info-divider { background: var(--rule); }
+    html[data-theme="away"] .qty-stepper { border-color: var(--rule); }
+    html[data-theme="away"] .qty-stepper-btn { color: var(--ink); }
+    html[data-theme="away"] .qty-stepper-btn:hover { background: var(--surface-elevated); }
+    html[data-theme="away"] .size-btn { border-color: var(--rule); color: var(--ink); background: transparent; }
+    html[data-theme="away"] .size-btn.active { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+    html[data-theme="away"] .product-detail-desc { color: rgba(244,238,229,0.55); }
+    html[data-theme="away"] .add-to-bag-btn { background: var(--gold); color: #fff; }
+    html[data-theme="away"] .add-to-bag-btn:hover { background: var(--gold-dark); }
+    html[data-theme="away"] .product-feature-item { color: rgba(244,238,229,0.6); }
+    html[data-theme="away"] .cart-drawer { background: var(--surface); color: var(--ink); }
+
+    /* THIRD mode overrides */
+    html[data-theme="third"] .logo-badge { background: #2a2216; box-shadow: 0 0 0 1px var(--bronze), inset 0 0 0 3px #2a2216, inset 0 0 0 4px rgba(176,135,89,0.55); }
+    html[data-theme="third"] .nav-cat { color: #7a6d52; }
+    html[data-theme="third"] .nav-cat:hover { border-color: var(--bronze); color: var(--ink); }
+    html[data-theme="third"] .announcement { background: #2a2216; color: #d9d2c5; border-bottom-color: rgba(176,135,89,0.35); }
+    html[data-theme="third"] .product-img,
+    html[data-theme="third"] .product-detail-gallery-main,
+    html[data-theme="third"] .product-detail-thumb { background: var(--surface-elevated); }
+    html[data-theme="third"] .cart-btn { background: #2a2216; color: #ece6d9; }
+    html[data-theme="third"] .add-to-bag-btn { background: var(--gold); color: #fff; }
+
+    /* ─── LIQUID GLASS SYSTEM ─── */
+    nav.glass-nav {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(24px) saturate(1.8);
+      -webkit-backdrop-filter: blur(24px) saturate(1.8);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        inset 0 -1px 0 rgba(0,0,0,0.04),
+        0 10px 40px -16px rgba(30,27,26,0.18);
+      border-bottom: 1px solid var(--rule);
+    }
+    html[data-theme="away"] nav.glass-nav {
+      background: rgba(21,18,15,0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(244,238,229,0.14),
+        inset 0 -1px 0 rgba(0,0,0,0.4),
+        0 14px 50px -18px rgba(0,0,0,0.6);
+    }
+    html[data-theme="third"] nav.glass-nav {
+      background: rgba(236,230,217,0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        inset 0 -1px 0 rgba(42,34,22,0.08),
+        0 10px 40px -16px rgba(42,34,22,0.18);
+    }
+
+    .kit-theme.glass-pill {
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(18px) saturate(1.8);
+      -webkit-backdrop-filter: blur(18px) saturate(1.8);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        inset 0 -1px 1px rgba(0,0,0,0.06),
+        0 6px 20px -8px rgba(30,27,26,0.14);
+    }
+    html[data-theme="away"] .kit-theme.glass-pill {
+      background: rgba(21,18,15,0.5);
+      border-color: rgba(176,135,89,0.25);
+      box-shadow:
+        inset 0 1px 0 rgba(244,238,229,0.18),
+        inset 0 -1px 1px rgba(0,0,0,0.5),
+        0 6px 20px -8px rgba(0,0,0,0.5);
+    }
+    html[data-theme="third"] .kit-theme.glass-pill {
+      background: rgba(236,230,217,0.55);
+      border-color: rgba(176,135,89,0.35);
+    }
+
+    .cart-drawer.glass-drawer {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(30px) saturate(1.8);
+      -webkit-backdrop-filter: blur(30px) saturate(1.8);
+      border-left: 1px solid rgba(255,255,255,0.6);
+      box-shadow:
+        inset 1px 0 0 rgba(255,255,255,0.9),
+        -20px 0 60px -20px rgba(30,27,26,0.22);
+    }
+    html[data-theme="away"] .cart-drawer.glass-drawer {
+      background: rgba(21,18,15,0.75);
+      border-left-color: rgba(176,135,89,0.25);
+      box-shadow:
+        inset 1px 0 0 rgba(244,238,229,0.12),
+        -20px 0 60px -20px rgba(0,0,0,0.7);
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 80;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(22px) saturate(1.8);
+      -webkit-backdrop-filter: blur(22px) saturate(1.8);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        inset 0 -1px 2px rgba(0,0,0,0.08),
+        0 12px 30px -10px rgba(30,27,26,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 18px;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .scroll-top:hover { background: rgba(255,255,255,0.75); }
+    html[data-theme="away"] .scroll-top {
+      background: rgba(21,18,15,0.6);
+      border-color: rgba(176,135,89,0.3);
+      color: var(--bronze);
+      box-shadow:
+        inset 0 1px 0 rgba(244,238,229,0.18),
+        inset 0 -1px 2px rgba(0,0,0,0.5),
+        0 12px 30px -10px rgba(0,0,0,0.55);
+    }
+
+    @media (max-width: 960px) {
+      .nav-top,
+      .nav-cats,
+      .newsletter-section,
+      .related-section,
+      footer {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      .product-detail-section {
+        padding: 40px 28px 56px;
+      }
+
+      .product-detail-grid,
+      .related-grid,
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-submit {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-top,
+      .nav-cats,
+      .newsletter-section,
+      .related-section,
+      footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .product-detail-section {
+        padding: 28px 20px 40px;
+      }
+
+      .related-grid {
+        gap: 16px;
+      }
+
+      .search-box {
+        max-width: calc(100vw - 24px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    <span data-t="announcement.line">Free Shipping Across the UAE</span><span class="sep">/</span><span data-t="announcement.line2">Official Al Jazira Club Store</span><span class="sep">/</span><span data-t="announcement.line3">25/26 Season Kit Out Now</span>
+  </div>
+
+  <!-- NAV -->
+  <nav class="glass-nav">
+    <div class="nav-top">
+      <a class="nav-logo" href="index.html">
+        <div class="logo-badge"></div>
+        <div class="logo-text">
+          <strong data-t="brand.full">Al Jazira Club</strong>
+          <span data-t="brand.tag">Official Store</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="tablist" aria-label="Language">
+          <button class="lang-toggle-btn" data-lang="en">EN</button>
+          <button class="lang-toggle-btn" data-lang="ar">ع</button>
+        </div>
+        <div class="kit-theme glass-pill" role="tablist" aria-label="Kit theme">
+          <button class="kit-theme-btn active" data-mode="home" data-label="H" title="Home Kit"></button>
+          <button class="kit-theme-btn" data-mode="away" data-label="A" title="Away Kit"></button>
+          <button class="kit-theme-btn" data-mode="third" data-label="3" title="Third Kit"></button>
+        </div>
+        <button class="nav-icon-btn" title="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav-icon-btn" title="Account">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="cart-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span data-t="nav.bag">Bag</span>
+          <span class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-cats">
+      <a href="index.html#section-new" class="nav-cat" data-t="nav.new">New Arrivals</a>
+      <a href="index.html#section-matchkit" class="nav-cat" data-t="nav.matchkit">Match Kit</a>
+      <a href="index.html#section-training" class="nav-cat" data-t="nav.training">Training</a>
+      <a href="index.html#section-lifestyle" class="nav-cat" data-t="nav.lifestyle">Lifestyle</a>
+      <a href="index.html#section-kids" class="nav-cat" data-t="nav.kids">Kids</a>
+      <a href="index.html#section-gifts" class="nav-cat" data-t="nav.gifts">Accessories &amp; Gifts</a>
+      <a href="all-products.html" class="nav-cat" data-t="nav.all">All Products</a>
+    </div>
+  </nav>
+
+  <!-- PRODUCT DETAIL -->
+  <div id="productDetailRoot"></div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-section">
+    <div class="newsletter-inner">
+      <div class="newsletter-badge">Stay in the Loop</div>
+      <h2 class="newsletter-title">First Access.<br>Exclusive Drops.</h2>
+      <p class="newsletter-sub">Join the Al Jazira Club community and get early access to new kits, limited editions, and member-only offers.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input class="newsletter-input" type="email" placeholder="Your email address" />
+        <button class="newsletter-submit" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <div class="footer-logo-badge">AJC</div>
+          <span class="footer-logo-text">Al Jazira Club</span>
+        </a>
+        <p class="footer-tagline">The official online store of Al Jazira Club — Abu Dhabi's pride since 1974.</p>
+        <div class="social-links">
+          <a href="#" class="social-link">f</a>
+          <a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">𝕏</a>
+          <a href="#" class="social-link">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="index.html#section-new">New Arrivals</a></li>
+          <li><a href="index.html#section-matchkit">Match Kit</a></li>
+          <li><a href="index.html#section-training">Training</a></li>
+          <li><a href="index.html#section-lifestyle">Lifestyle</a></li>
+          <li><a href="all-products.html">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="checkout.html#faq">FAQ</a></li>
+          <li><a href="checkout.html#shipping">Shipping Info</a></li>
+          <li><a href="checkout.html#returns">Returns</a></li>
+          <li><a href="checkout.html#size-guide">Size Guide</a></li>
+          <li><a href="checkout.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Club</h4>
+        <ul>
+          <li><a href="#">About Al Jazira</a></li>
+          <li><a href="#">Membership</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Fixtures</a></li>
+          <li><a href="#">Stadium</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Al Jazira Club. All rights reserved. Abu Dhabi, UAE.</p>
+      <div class="payment-icons">
+        <span class="payment-icon">VISA</span>
+        <span class="payment-icon">MC</span>
+        <span class="payment-icon">AMEX</span>
+        <span class="payment-icon">Apple Pay</span>
+        <span class="payment-icon">Cash</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART OVERLAY + DRAWER -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer glass-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title"><span data-t="cart.title">Your Bag</span> <span id="cartHeaderCount" style="color:var(--mid);font-weight:500;font-size:14px;"></span></div>
+      <button class="cart-close-btn" id="cartCloseBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🛍️</div>
+        <p data-t="cart.empty">Your bag is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label" data-t="cart.subtotal">Subtotal</span>
+        <span class="cart-subtotal-amount" id="cartSubtotal">AED 0</span>
+      </div>
+      <button class="cart-checkout-btn"><span data-t="cart.checkout">Proceed to Checkout</span> <span data-t-arrow>→</span></button>
+      <button class="cart-continue-btn" id="cartContinueBtn" data-t="cart.continue">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <div class="search-input-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="search-input" id="searchInput" type="text" placeholder="Search products…" />
+        <button class="search-close" id="searchCloseBtn">✕</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script>
+    // ── PRODUCT DATA (identical to index.html) ──
+    const products = [
+      { name: 'Al Jazira 25/26 Home Shirt',         category: 'Match Kit',   price: 245, originalPrice: 349, img: 'https://ajcstore.ae/cdn/shop/files/CLIN2084_13a0cf9f-f776-4a59-a301-80357d1cf744.png' },
+      { name: 'Al Jazira 25/26 Away Shirt',         category: 'Match Kit',   price: 245, originalPrice: 349, img: 'https://ajcstore.ae/cdn/shop/files/CLIN1506.png' },
+      { name: 'Al Jazira 25/26 Limited Edition',    category: 'Match Kit',   price: 399, img: 'https://ajcstore.ae/cdn/shop/files/13.png' },
+      { name: 'Al Jazira Adidas Warm-Up T-shirt',   category: 'Training',    price: 299, img: 'https://ajcstore.ae/cdn/shop/files/Z8N41931copy.jpg' },
+      { name: '24/25 Home Shirt',                   category: 'Match Kit',   price: 349, img: 'https://ajcstore.ae/cdn/shop/files/DSC08021copy.png' },
+      { name: '24/25 Away Shirt',                   category: 'Match Kit',   price: 175, originalPrice: 349, img: 'https://ajcstore.ae/cdn/shop/files/DSC07872copy.png' },
+      { name: 'Adult Home Adidas Shorts',            category: 'Match Kit',   price: 139, img: 'https://ajcstore.ae/cdn/shop/files/JI9515_01_laydown.jpgcopy.jpg' },
+      { name: 'Adult Away Adidas Shorts',            category: 'Match Kit',   price: 139, img: 'https://ajcstore.ae/cdn/shop/files/JD0430_01_laydown.jpgcopy.jpg' },
+      { name: 'Adidas Training Shirt Blue',          category: 'Training',    price: 199, img: 'https://ajcstore.ae/cdn/shop/files/JI8943_22_modelcopy.jpg' },
+      { name: 'Adidas Training Shirt Green',         category: 'Training',    price: 199, img: 'https://ajcstore.ae/cdn/shop/files/JI8944_22_modelcopy_1b3a5e48-4f01-4339-97fd-5136ff94656b.jpg' },
+      { name: 'Adidas Training Pants',               category: 'Training',    price: 249, img: 'https://ajcstore.ae/cdn/shop/files/xxlarg.jpg' },
+      { name: 'Half-zip Adidas Training Jacket',     category: 'Training',    price: 249, img: 'https://ajcstore.ae/cdn/shop/files/DCC.jpg' },
+      { name: '24/25 Kids Home Shirt',               category: 'Kids',        price: 149, originalPrice: 274, img: 'https://ajcstore.ae/cdn/shop/files/kidskitedit2024-25-7480copy.png' },
+      { name: '24/25 Kids Away Shirt',               category: 'Kids',        price: 149, originalPrice: 274, img: 'https://ajcstore.ae/cdn/shop/files/kidskitedit2024-25-7737copy.png' },
+      { name: 'Kids Away Shorts',                    category: 'Kids',        price: 99,  originalPrice: 125, img: 'https://ajcstore.ae/cdn/shop/files/kidskitedit2024-25-7764copy.png' },
+      { name: 'Kids Casual Shirt',                   category: 'Kids',        price: 125, originalPrice: 225, img: 'https://ajcstore.ae/cdn/shop/files/kidskitedit2024-25-7462copy.png' },
+      { name: 'Al Jazira Backpack',                  category: 'Accessories', price: 60,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5427copy.png' },
+      { name: 'Al Jazira Duffle Bag',                category: 'Accessories', price: 150, img: 'https://ajcstore.ae/cdn/shop/files/bag.png' },
+      { name: 'Al Jazira Drawstring Bag',            category: 'Accessories', price: 25,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5544copy.png' },
+      { name: 'Al Jazira Football',                  category: 'Accessories', price: 50,  img: 'https://ajcstore.ae/cdn/shop/files/ball_1.png' },
+      { name: 'Al Jazira Cap',                       category: 'Accessories', price: 30,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5479copy.png' },
+      { name: 'Al Jazira Scarf',                     category: 'Accessories', price: 30,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5690copy.png' },
+      { name: 'Al Jazira Mug',                       category: 'Gifts',       price: 20,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5488copy.png' },
+      { name: 'Al Jazira Water Bottle',              category: 'Accessories', price: 25,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5505copy.png' },
+      { name: 'Al Jazira Keychain',                  category: 'Gifts',       price: 20,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5587copy.png' },
+      { name: 'Al Jazira Flag with Pole',            category: 'Gifts',       price: 5,   img: 'https://ajcstore.ae/cdn/shop/files/DSC5660copy.png' },
+      { name: 'Al Jazira Hand Towel',                category: 'Accessories', price: 20,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5640copy.png' },
+      { name: 'iPhone 14 Cover',                     category: 'Accessories', price: 20,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5552copy.png' },
+      { name: 'Casual T-shirt',                      category: 'Lifestyle',   price: 159, originalPrice: 299, img: 'https://ajcstore.ae/cdn/shop/files/Z8N7275copy.png' },
+      { name: 'Al Jazira Pen',                       category: 'Lifestyle',   price: 20,  img: 'https://ajcstore.ae/cdn/shop/files/DSC5605copy.png' },
+    ];
+
+    // ── DESCRIPTION GENERATOR ──
+    function generateDescription(product) {
+      const { name, category } = product;
+      const descriptions = {
+        'Match Kit': [
+          `The official Al Jazira Club ${name} is crafted for performance and pride. Engineered with Adidas AEROREADY technology, it keeps you cool and comfortable whether you're cheering from the stands or taking to the pitch. The iconic Al Jazira crest is woven in fine detail, making this an essential piece for every true fan.`,
+          `Represent Al Jazira Club in authentic style with the ${name}. This official Adidas kit features moisture-wicking fabric and a streamlined fit that moves with you. Complete with the official club badge embroidered on the chest — the mark of a true supporter.`
+        ],
+        'Training': [
+          `Push your limits in the ${name}. Designed in partnership with Adidas, this training piece features advanced moisture management technology and a performance fit built for the demands of the training ground. Lightweight, breathable, and built to last.`,
+          `The ${name} is your go-to for every training session. Adidas performance fabric wicks sweat and keeps you focused on the game. A streamlined cut and Al Jazira Club branding make this a must-have for serious athletes.`
+        ],
+        'Kids': [
+          `Let the next generation show their Al Jazira pride. The ${name} is built for active kids — durable, comfortable, and officially licensed. The same bold club identity as the senior kit, scaled down for little champions.`,
+          `Dress your little fan in authentic Al Jazira style with the ${name}. Soft, durable fabric designed for kids on the move. Official club badge and colors — because every fan deserves real gear.`
+        ],
+        'Accessories': [
+          `Show your Al Jazira Club allegiance wherever you go with the ${name}. Officially licensed and crafted with attention to detail, this is a must-have for any dedicated fan looking to complete their collection.`,
+          `The ${name} is a fan essential — officially licensed by Al Jazira Club and built to last. Perfect as an everyday carry or a gift for the supporter in your life.`
+        ],
+        'Gifts': [
+          `The perfect gift for an Al Jazira Club fan. The ${name} is officially licensed and carries the club's proud identity. A thoughtful, lasting memento for any occasion — from birthdays to matchdays.`,
+          `Celebrate your love for Al Jazira Club with the ${name}. This officially licensed piece makes an ideal gift for fans of all ages, bringing a touch of club pride to everyday life.`
+        ],
+        'Lifestyle': [
+          `Take your Al Jazira Club style off the pitch with the ${name}. A contemporary look that blends club identity with everyday wearability — crafted for fans who live and breathe the game, on and off the field.`,
+          `The ${name} brings Al Jazira Club culture to your everyday wardrobe. Relaxed fit, premium materials, and bold club branding make this a standout piece for fans who want to represent in any setting.`
+        ]
+      };
+      const options = descriptions[category] || descriptions['Accessories'];
+      const seed = Array.from(`${name}:${category}`).reduce((sum, char) => sum + char.charCodeAt(0), 0);
+      return options[seed % options.length];
+    }
+
+    // ── SIZE OPTIONS ──
+    function getSizeOptions(category) {
+      const apparelCats = ['Match Kit', 'Training', 'Kids', 'Lifestyle'];
+      if (apparelCats.includes(category)) {
+        return ['S', 'M', 'L', 'XL'];
+      }
+      return ['One Size'];
+    }
+
+    // ── CART STATE ──
+    const CART_STORAGE_KEY = 'ajc-cart-v1';
+    const APPAREL_CATEGORIES = new Set(['Match Kit', 'Training', 'Kids', 'Lifestyle']);
+    let cart = [];
+    let selectedQty = 1;
+    let selectedSize = null;
+
+    function getDefaultSize(category) {
+      return APPAREL_CATEGORIES.has(category) ? 'M' : 'One Size';
+    }
+
+    function buildCartKey(item) {
+      const base = item.id || item.name;
+      const size = item.size || '';
+      const meta = item.meta || '';
+      return `${base}::${size}::${meta}`;
+    }
+
+    function normalizeCartItem(item) {
+      const size = item.custom ? (item.size || '') : (item.size || getDefaultSize(item.category));
+      const normalized = {
+        ...item,
+        size,
+        qty: Math.max(1, Number(item.qty) || 1),
+      };
+      normalized.key = item.key || buildCartKey(normalized);
+      return normalized;
+    }
+
+    function loadCart() {
+      try {
+        const raw = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '[]');
+        return Array.isArray(raw) ? raw.map(normalizeCartItem) : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveCart() {
+      try {
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+      } catch (error) {
+        // Ignore storage write errors in the static prototype.
+      }
+    }
+
+    function getCartTotal() {
+      return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((s, i) => s + i.qty, 0);
+      document.querySelector('.cart-count').textContent = count;
+      document.getElementById('cartHeaderCount').textContent = count > 0 ? `(${count})` : '';
+
+      const itemsEl = document.getElementById('cartItems');
+      const footerEl = document.getElementById('cartFooter');
+
+      if (cart.length === 0) {
+        itemsEl.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍️</div><p data-t="cart.empty">Your bag is empty</p></div>`;
+        if (window.AJCLang) window.AJCLang.apply(window.AJCLang.current());
+        footerEl.style.display = 'none';
+        return;
+      }
+
+      footerEl.style.display = 'block';
+      document.getElementById('cartSubtotal').textContent = `AED ${getCartTotal().toLocaleString()}`;
+
+      itemsEl.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item">
+          <img class="cart-item-img" src="${item.img}" alt="${item.name}" />
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-cat">${[item.category, item.size].filter(Boolean).join(' · ')}</div>
+            <div class="cart-item-controls">
+              <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
+              <span class="qty-num">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
+            </div>
+          </div>
+          <span class="cart-item-price">AED ${(item.price * item.qty).toLocaleString()}</span>
+          <button class="cart-item-remove" onclick="removeItem(${idx})">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function changeQty(idx, delta) {
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      saveCart();
+      updateCartUI();
+    }
+
+    function removeItem(idx) {
+      cart.splice(idx, 1);
+      saveCart();
+      updateCartUI();
+    }
+
+    function addToCart(product) {
+      const nextItem = normalizeCartItem(product);
+      const existing = cart.find(i => i.key === nextItem.key);
+      if (existing) {
+        existing.qty += nextItem.qty;
+      } else {
+        cart.push(nextItem);
+      }
+      saveCart();
+      updateCartUI();
+      const sizeNote = nextItem.size ? ` · ${nextItem.size}` : '';
+      showToast(`<span class="toast-gold">${nextItem.name}</span>${sizeNote} added to bag`);
+      openCart();
+    }
+
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('open');
+      document.getElementById('cartOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.remove('open');
+      document.getElementById('cartOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('cartCloseBtn').addEventListener('click', closeCart);
+    document.getElementById('cartOverlay').addEventListener('click', closeCart);
+    document.getElementById('cartContinueBtn').addEventListener('click', closeCart);
+    document.querySelector('.cart-btn').addEventListener('click', openCart);
+    document.querySelector('.cart-checkout-btn').addEventListener('click', () => {
+      window.location.href = 'checkout.html';
+    });
+
+    // ── TOAST ──
+    let toastTimer;
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.innerHTML = msg;
+      el.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
+    }
+
+    // ── SEARCH ──
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    document.querySelector('.nav-icon-btn[title="Search"]').addEventListener('click', () => {
+      searchOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => searchInput.focus(), 100);
+      renderSearch('');
+    });
+
+    function closeSearch() {
+      searchOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+      searchInput.value = '';
+    }
+
+    document.getElementById('searchCloseBtn').addEventListener('click', closeSearch);
+    searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearch(); });
+    searchInput.addEventListener('input', () => renderSearch(searchInput.value.trim().toLowerCase()));
+
+    function renderSearch(query) {
+      const matches = query === ''
+        ? products.slice(0, 6)
+        : products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+
+      if (matches.length === 0) {
+        searchResults.innerHTML = `<div class="search-no-results">No results for "${query}"</div>`;
+        return;
+      }
+
+      searchResults.innerHTML = matches.map((p, i) => {
+        const idx = products.indexOf(p);
+        return `
+          <div class="search-result-item" onclick="window.location='product.html?id=${idx}';closeSearch();">
+            <img class="search-result-img" src="${p.img}" alt="${p.name}" />
+            <div>
+              <div class="search-result-name">${p.name}</div>
+              <div class="search-result-price">${p.category} · AED ${p.price}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ── NEWSLETTER ──
+    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.querySelector('.newsletter-input');
+      if (!input.value.includes('@')) { showToast('Please enter a valid email'); return; }
+      input.value = '';
+      document.querySelector('.newsletter-submit').textContent = '✓ Subscribed!';
+      showToast("You're in! Welcome to the Al Jazira family.");
+      setTimeout(() => { document.querySelector('.newsletter-submit').textContent = 'Subscribe'; }, 3000);
+    });
+
+    // ── RENDER PRODUCT CARD (for "You may also like") ──
+    function renderProductCard(p, idx) {
+      const isSale = p.originalPrice && p.originalPrice > p.price;
+      const badgeHtml = isSale
+        ? `<span class="product-badge sale">Sale</span>`
+        : '';
+      const priceHtml = isSale
+        ? `<span class="price-current">AED ${p.price}</span><span class="price-original">AED ${p.originalPrice}</span>`
+        : `<span class="price-current">AED ${p.price}</span>`;
+
+      return `
+        <div class="product-card" onclick="window.location='product.html?id=${idx}'">
+          <div class="product-img">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" />
+            ${badgeHtml}
+            <div class="product-wishlist" onclick="event.stopPropagation();toggleWishlist(this);">♡</div>
+            <button class="product-quick-add" onclick="event.stopPropagation();addToCart(${JSON.stringify(p).replace(/"/g, '&quot;')});" data-t="prod.quickadd">Quick Add</button>
+          </div>
+          <div class="product-info">
+            <div class="product-name">${p.name}</div>
+            <div class="product-category">${p.category}</div>
+            <div class="product-price">${priceHtml}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function toggleWishlist(btn) {
+      const liked = btn.classList.toggle('liked');
+      btn.textContent = liked ? '♥' : '♡';
+      btn.style.color = liked ? '#ff3b30' : '';
+      showToast(liked ? 'Added to wishlist ♥' : 'Removed from wishlist');
+    }
+
+    // ── RENDER PRODUCT DETAIL PAGE ──
+    function renderProductPage(productIdx) {
+      const root = document.getElementById('productDetailRoot');
+
+      if (productIdx < 0 || productIdx >= products.length || isNaN(productIdx)) {
+        root.innerHTML = `
+          <div class="not-found">
+            <h2>Product not found</h2>
+            <p>The product you're looking for doesn't exist.</p>
+            <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:var(--white);text-decoration:none;font-size:13px;font-weight:800;padding:14px 28px;border-radius:100px;">← Back to Store</a>
+          </div>
+        `;
+        return;
+      }
+
+      const p = products[productIdx];
+      const isSale = p.originalPrice && p.originalPrice > p.price;
+      const salePct = isSale ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
+      const sizeOptions = getSizeOptions(p.category);
+      const description = generateDescription(p);
+
+      // Update page title
+      document.title = `${p.name} — Al Jazira Club Official Store`;
+
+      // Badge
+      let badgeHtml = '';
+      if (isSale) {
+        badgeHtml = `<div class="product-detail-sale-badge">Save ${salePct}%</div>`;
+      }
+
+      // Price row
+      let priceHtml = `<span class="detail-price-current">AED ${p.price}</span>`;
+      if (isSale) {
+        priceHtml += `
+          <span class="detail-price-original">AED ${p.originalPrice}</span>
+          <span class="detail-price-save">Save ${salePct}%</span>
+        `;
+      }
+
+      // Size buttons
+      const sizesHtml = sizeOptions.map(s =>
+        `<button class="size-btn" onclick="selectSize(this, '${s}')">${s}</button>`
+      ).join('');
+
+      // Features
+      const featureMap = {
+        'Match Kit': ['Official Adidas licensed product', 'AEROREADY moisture-wicking technology', 'Embroidered Al Jazira Club crest', 'Relaxed performance fit'],
+        'Training': ['Adidas training technology', 'Sweat-absorbing fabric', 'Ergonomic cut for full range of motion', 'Machine washable'],
+        'Kids': ['Officially licensed kids kit', 'Soft and durable fabric', 'Embroidered club badge', 'True-to-size fit'],
+        'Accessories': ['Officially licensed product', 'Al Jazira Club branding', 'Premium quality materials', 'Ideal as a gift'],
+        'Gifts': ['Officially licensed product', 'Al Jazira Club branding', 'Perfect fan gift', 'Comes in branded packaging'],
+        'Lifestyle': ['Club lifestyle collection', 'Premium cotton blend', 'Relaxed everyday fit', 'Bold club identity'],
+      };
+      const featureList = featureMap[p.category] || featureMap['Accessories'];
+      const featuresHtml = featureList.map(f => `<div class="product-feature-item">${f}</div>`).join('');
+
+      // Related products (same category, excluding current, up to 4, shuffled)
+      const related = products
+        .map((prod, idx) => ({ prod, idx }))
+        .filter(({ prod, idx }) => prod.category === p.category && idx !== productIdx);
+
+      // Shuffle
+      for (let i = related.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [related[i], related[j]] = [related[j], related[i]];
+      }
+      const relatedFour = related.slice(0, 4);
+
+      let relatedSection = '';
+      if (relatedFour.length > 0) {
+        const relatedCards = relatedFour.map(({ prod, idx }) => renderProductCard(prod, idx)).join('');
+        relatedSection = `
+          <div class="related-section">
+            <div class="related-header">
+              <div class="related-title">You may also like</div>
+              <div class="related-sub">More from ${p.category}</div>
+            </div>
+            <div class="related-grid">${relatedCards}</div>
+          </div>
+        `;
+      }
+
+      root.innerHTML = `
+        <div class="product-detail-section">
+          <a href="index.html" class="back-link">
+            <span data-t-arrow>←</span> <span data-t="pd.back">Back to Store</span>
+          </a>
+          <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="all-products.html?category=${encodeURIComponent(p.category)}">${p.category}</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">${p.name}</span>
+          </div>
+          <div class="product-detail-grid">
+            <div class="product-detail-img-wrap">
+              <div class="product-detail-img">
+                <img src="${p.img}" alt="${p.name}" />
+                ${badgeHtml}
+              </div>
+            </div>
+            <div class="product-detail-info">
+              <div class="product-detail-category">${p.category}</div>
+              <h1 class="product-detail-name">${p.name}</h1>
+              <div class="product-detail-price-row">${priceHtml}</div>
+              <p class="product-detail-desc">${description}</p>
+              <div class="info-divider"></div>
+              <div class="selector-label" data-t="pd.size">Size</div>
+              <div class="size-options" id="sizeOptions">${sizesHtml}</div>
+              <div class="info-divider"></div>
+              <div class="qty-row">
+                <div class="selector-label" style="margin-bottom:0;" data-t="pd.qty">Quantity</div>
+                <div class="qty-stepper">
+                  <button class="qty-stepper-btn" onclick="changeDetailQty(-1)">−</button>
+                  <div class="qty-stepper-val" id="detailQtyVal">1</div>
+                  <button class="qty-stepper-btn" onclick="changeDetailQty(1)">+</button>
+                </div>
+              </div>
+              <button class="add-to-bag-btn" onclick="handleAddToBag(${productIdx})">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span data-t="pd.addtobag">Add to Bag</span>
+              </button>
+              <div class="product-features">${featuresHtml}</div>
+            </div>
+          </div>
+        </div>
+        ${relatedSection}
+      `;
+
+      // Auto-select first size
+      const firstSizeBtn = document.querySelector('.size-btn');
+      if (firstSizeBtn) {
+        firstSizeBtn.classList.add('selected');
+        selectedSize = firstSizeBtn.textContent;
+      }
+
+      // Apply current language to freshly-rendered DOM
+      if (window.AJCLang) window.AJCLang.apply(window.AJCLang.current());
+    }
+    // Re-render when language changes (breadcrumb + labels update)
+    window.addEventListener('ajc-lang-change', () => {
+      if (window.AJCLang) window.AJCLang.apply(window.AJCLang.current());
+    });
+
+    function selectSize(btn, size) {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedSize = size;
+    }
+
+    function changeDetailQty(delta) {
+      selectedQty = Math.max(1, selectedQty + delta);
+      document.getElementById('detailQtyVal').textContent = selectedQty;
+    }
+
+    function handleAddToBag(productIdx) {
+      const p = products[productIdx];
+      addToCart({ ...p, size: selectedSize || getDefaultSize(p.category), qty: selectedQty });
+    }
+
+    // ── INIT ──
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get('id'), 10);
+    renderProductPage(productId);
+
+    // ── KIT THEME SWITCHER ──
+    (function initKitTheme() {
+      const root = document.documentElement;
+      const buttons = document.querySelectorAll('.kit-theme-btn');
+      const saved = localStorage.getItem('ajc-theme') || 'home';
+      const apply = (mode) => {
+        root.setAttribute('data-theme', mode);
+        buttons.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+        localStorage.setItem('ajc-theme', mode);
+      };
+      apply(saved);
+      buttons.forEach(btn => btn.addEventListener('click', () => apply(btn.dataset.mode)));
+    })();
+
+    cart = loadCart();
+    updateCartUI();
+
+    window.addEventListener('storage', (event) => {
+      if (event.key !== CART_STORAGE_KEY) return;
+      cart = loadCart();
+      updateCartUI();
+    });
+
+    // ── SCROLL-TO-TOP GLASS CHIP ──
+    (function initScrollTop() {
+      const btn = document.getElementById('scrollTop');
+      if (!btn) return;
+      const onScroll = () => btn.classList.toggle('visible', window.scrollY > 480);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      onScroll();
+    })();
+  </script>
+
+  <!-- LIQUID GLASS SCROLL-TO-TOP -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+.DS_Store
+*.log
+node_modules/
+
+# Oversize originals (we ship optimised web versions instead)
+hero-player.png
+hero-poster.png

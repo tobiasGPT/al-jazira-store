@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Al Jazira Club Official Store</title>
+  <script>try{
+    var h=document.documentElement;
+    h.setAttribute('data-theme',localStorage.getItem('ajc-theme')||'home');
+    var l=localStorage.getItem('ajc-lang')||'en';
+    h.setAttribute('data-lang',l);
+    h.setAttribute('lang',l);
+    h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+  }catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="lang.css" />
+  <script src="lang.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #D03239;
+      --gold-dark: #a82026;
+      --bronze: #B08759;
+      --dark: #1E1B1A;
+      --charcoal: #2a2724;
+      --mid: #888;
+      --light: #f5f5f5;
+      --border: #e8e8e8;
+      --white: #ffffff;
+      --font: 'Barlow', sans-serif;
+      --font-display: 'Barlow Condensed', 'Barlow', sans-serif;
+      --surface: #ffffff;
+      --surface-nav: rgba(255,255,255,0.96);
+      --surface-elevated: #f5f5f5;
+      --ink: #1E1B1A;
+      --ink-muted: #888;
+      --rule: #e8e8e8;
+    }
+
+    html[data-theme="home"] {
+      --surface: #ffffff;
+      --surface-nav: rgba(255,255,255,0.96);
+      --surface-elevated: #f5f5f5;
+      --ink: #1E1B1A;
+      --ink-muted: #888;
+      --rule: #e8e8e8;
+    }
+
+    html[data-theme="away"] {
+      --surface: #15120f;
+      --surface-nav: rgba(15,13,12,0.92);
+      --surface-elevated: #221e1a;
+      --ink: #f4eee5;
+      --ink-muted: rgba(244,238,229,0.45);
+      --rule: rgba(176,135,89,0.18);
+      --light: #221e1a;
+      --border: rgba(244,238,229,0.08);
+      --mid: rgba(244,238,229,0.45);
+      --dark: #f4eee5;
+      --charcoal: #e5dccb;
+    }
+
+    html[data-theme="third"] {
+      --surface: #ece6d9;
+      --surface-nav: rgba(236,230,217,0.94);
+      --surface-elevated: #e0d9c7;
+      --ink: #2a2216;
+      --ink-muted: #7a6d52;
+      --rule: rgba(176,135,89,0.28);
+      --light: #e0d9c7;
+      --border: rgba(42,34,22,0.12);
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--surface);
+      color: var(--ink);
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    a { color: inherit; }
+
+    .announcement {
+      background: #1E1B1A;
+      text-align: center;
+      padding: 11px 20px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: var(--bronze);
+      border-bottom: 1px solid rgba(176,135,89,0.22);
+    }
+    .announcement .sep { color: rgba(176,135,89,0.45); margin: 0 14px; font-weight: 400; }
+    html[data-theme="third"] .announcement { background: #2a2216; color: #d9d2c5; border-bottom-color: rgba(176,135,89,0.35); }
+
+    /* NAV (liquid glass) */
+    nav.glass-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(24px) saturate(1.8);
+      -webkit-backdrop-filter: blur(24px) saturate(1.8);
+      border-bottom: 1px solid var(--rule);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        inset 0 -1px 0 rgba(0,0,0,0.04),
+        0 10px 40px -16px rgba(30,27,26,0.18);
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+    html[data-theme="away"] nav.glass-nav {
+      background: rgba(21,18,15,0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(244,238,229,0.14),
+        inset 0 -1px 0 rgba(0,0,0,0.4),
+        0 14px 50px -18px rgba(0,0,0,0.6);
+    }
+    html[data-theme="third"] nav.glass-nav {
+      background: rgba(236,230,217,0.55);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        inset 0 -1px 0 rgba(42,34,22,0.08),
+        0 10px 40px -16px rgba(42,34,22,0.18);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 48px;
+      min-height: 76px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      background: #1E1B1A;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px var(--bronze), inset 0 0 0 3px #1E1B1A, inset 0 0 0 4px rgba(176,135,89,0.35);
+    }
+
+    .logo-badge::after {
+      content: 'AJC';
+      color: var(--bronze);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-text strong {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .kit-theme.glass-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(18px) saturate(1.8);
+      -webkit-backdrop-filter: blur(18px) saturate(1.8);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 100px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        inset 0 -1px 1px rgba(0,0,0,0.06),
+        0 6px 20px -8px rgba(30,27,26,0.14);
+    }
+    html[data-theme="away"] .kit-theme.glass-pill {
+      background: rgba(21,18,15,0.5);
+      border-color: rgba(176,135,89,0.25);
+      box-shadow:
+        inset 0 1px 0 rgba(244,238,229,0.18),
+        inset 0 -1px 1px rgba(0,0,0,0.5),
+        0 6px 20px -8px rgba(0,0,0,0.5);
+    }
+    html[data-theme="third"] .kit-theme.glass-pill {
+      background: rgba(236,230,217,0.55);
+      border-color: rgba(176,135,89,0.35);
+    }
+
+    .kit-theme-btn {
+      width: 26px;
+      height: 26px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 800;
+      color: transparent;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .kit-theme-btn[data-mode="home"] { background: #D03239; color: #fff; }
+    .kit-theme-btn[data-mode="away"] { background: #1E1B1A; color: #B08759; }
+    .kit-theme-btn[data-mode="third"] { background: #d9d2c5; color: #2a2216; }
+    .kit-theme-btn::after { content: attr(data-label); opacity: 0; transition: opacity 0.2s; color: inherit; }
+    .kit-theme-btn.active {
+      transform: scale(1.15);
+      box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--gold);
+    }
+    .kit-theme-btn.active::after,
+    .kit-theme-btn:hover::after { opacity: 1; }
+
+    .nav-link {
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(14px) saturate(1.5);
+      -webkit-backdrop-filter: blur(14px) saturate(1.5);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.8),
+        inset 0 -1px 0 rgba(0,0,0,0.02);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    html[data-theme="away"] .nav-link {
+      background: rgba(244,238,229,0.04);
+      box-shadow: inset 0 1px 0 rgba(244,238,229,0.08), inset 0 -1px 0 rgba(0,0,0,0.25);
+    }
+    .nav-link:hover { border-color: var(--bronze); color: var(--ink); }
+
+    .nav-link.primary {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.22);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 52%),
+        linear-gradient(180deg, #d9444b 0%, #D03239 45%, #b42830 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.42),
+        inset 0 -1px 0 rgba(0,0,0,0.28),
+        0 6px 18px -6px rgba(208,50,57,0.5);
+    }
+    .nav-link.primary:hover { filter: brightness(1.06); }
+
+    .checkout-shell {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 56px 48px 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(340px, 420px);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .checkout-main,
+    .checkout-summary,
+    .help-card {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(20px) saturate(1.6);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6);
+      border: 1px solid rgba(255,255,255,0.65);
+      border-radius: 4px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        inset 0 -1px 0 rgba(0,0,0,0.04),
+        0 16px 48px -20px rgba(30,27,26,0.18);
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+    html[data-theme="away"] .checkout-main,
+    html[data-theme="away"] .checkout-summary,
+    html[data-theme="away"] .help-card {
+      background: rgba(21,18,15,0.55);
+      border-color: rgba(176,135,89,0.22);
+      box-shadow:
+        inset 0 1px 0 rgba(244,238,229,0.1),
+        inset 0 -1px 0 rgba(0,0,0,0.4),
+        0 16px 48px -20px rgba(0,0,0,0.5);
+    }
+    html[data-theme="third"] .checkout-main,
+    html[data-theme="third"] .checkout-summary,
+    html[data-theme="third"] .help-card {
+      background: rgba(236,230,217,0.55);
+      border-color: rgba(176,135,89,0.35);
+    }
+
+    .checkout-main {
+      padding: 36px;
+    }
+
+    .checkout-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 16px;
+    }
+
+    .checkout-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 0.92;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .checkout-sub {
+      max-width: 620px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      margin-bottom: 32px;
+    }
+
+    .checkout-form {
+      display: grid;
+      gap: 28px;
+    }
+
+    .form-section {
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .form-section:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .form-row-full { grid-column: 1 / -1; }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px) saturate(1.4);
+      -webkit-backdrop-filter: blur(12px) saturate(1.4);
+      color: var(--ink);
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), inset 0 -1px 0 rgba(0,0,0,0.03);
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    html[data-theme="away"] .form-input,
+    html[data-theme="away"] .form-select,
+    html[data-theme="away"] .form-textarea {
+      background: rgba(244,238,229,0.04);
+      box-shadow: inset 0 1px 0 rgba(244,238,229,0.08), inset 0 -1px 0 rgba(0,0,0,0.3);
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--bronze);
+      background: rgba(176,135,89,0.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 0 0 3px rgba(176,135,89,0.15);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(0,0,0,0.28); }
+    html[data-theme="away"] .form-input::placeholder,
+    html[data-theme="away"] .form-textarea::placeholder { color: rgba(244,238,229,0.3); }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .help-inline {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    .checkout-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 2px;
+      padding: 18px 28px;
+      color: #fff;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 52%),
+        linear-gradient(180deg, #d9444b 0%, #D03239 45%, #b42830 100%);
+      backdrop-filter: blur(20px) saturate(1.6);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.42),
+        inset 0 -1px 0 rgba(0,0,0,0.28),
+        0 12px 36px -10px rgba(208,50,57,0.55);
+      transition: transform 0.2s ease, filter 0.2s, box-shadow 0.25s, gap 0.25s;
+    }
+    .checkout-submit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 140% 80% at 50% -40%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 60%);
+      pointer-events: none;
+    }
+    .checkout-submit:hover {
+      filter: brightness(1.06);
+      transform: translateY(-2px);
+      gap: 18px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.55),
+        inset 0 -1px 0 rgba(0,0,0,0.3),
+        0 16px 44px -12px rgba(208,50,57,0.75);
+    }
+
+    .checkout-summary {
+      position: sticky;
+      top: 112px;
+      padding: 28px;
+    }
+
+    .summary-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .summary-items {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .summary-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .summary-item img {
+      width: 72px;
+      height: 72px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: var(--surface);
+    }
+
+    .summary-item-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .summary-item-meta {
+      font-size: 12px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    .summary-item-price {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .summary-totals {
+      display: grid;
+      gap: 10px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    .summary-row strong {
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    .summary-pill {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      color: var(--ink-muted);
+      font-size: 12px;
+    }
+
+    .success-card,
+    .empty-card {
+      display: none;
+      padding: 36px;
+      border-radius: 24px;
+      border: 1px solid var(--rule);
+      background: var(--surface-elevated);
+    }
+
+    .success-card.show,
+    .empty-card.show {
+      display: block;
+    }
+
+    .success-card h2,
+    .empty-card h2 {
+      font-family: var(--font-display);
+      font-size: 42px;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .success-card p,
+    .empty-card p {
+      color: var(--ink-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 560px;
+    }
+
+    .success-actions,
+    .empty-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(14px) saturate(1.5);
+      -webkit-backdrop-filter: blur(14px) saturate(1.5);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    html[data-theme="away"] .action-btn {
+      background: rgba(244,238,229,0.04);
+      box-shadow: inset 0 1px 0 rgba(244,238,229,0.08);
+    }
+    .action-btn:hover { border-color: var(--bronze); }
+
+    .action-btn.primary {
+      color: #fff;
+      border-color: rgba(255,255,255,0.22);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 52%),
+        linear-gradient(180deg, #d9444b 0%, #D03239 45%, #b42830 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.42),
+        inset 0 -1px 0 rgba(0,0,0,0.28),
+        0 10px 28px -8px rgba(208,50,57,0.5);
+    }
+    .action-btn.primary:hover { filter: brightness(1.06); }
+
+    .help-section {
+      max-width: 1360px;
+      margin: 0 auto 72px;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .help-card {
+      padding: 24px;
+    }
+
+    .help-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .help-card p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+    }
+
+    /* Floating glass scroll-to-top */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 80;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(22px) saturate(1.8);
+      -webkit-backdrop-filter: blur(22px) saturate(1.8);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        inset 0 -1px 2px rgba(0,0,0,0.08),
+        0 12px 30px -10px rgba(30,27,26,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 18px;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    html[data-theme="away"] .scroll-top {
+      background: rgba(21,18,15,0.6);
+      border-color: rgba(176,135,89,0.3);
+      color: var(--bronze);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--ink);
+      color: var(--surface);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 100px;
+      z-index: 600;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 1080px) {
+      .checkout-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .checkout-summary {
+        position: static;
+      }
+
+      .help-section {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner,
+      .checkout-shell,
+      .help-section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .form-grid,
+      .help-section {
+        grid-template-columns: 1fr;
+      }
+
+      .checkout-main,
+      .checkout-summary,
+      .success-card,
+      .empty-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement"><span data-t="announcement.line2">Official Al Jazira Club Store</span><span class="sep">/</span><span data-t="announcement.check">Secure Checkout Prototype</span><span class="sep">/</span><span data-t="announcement.ship">Free Shipping Over AED 150</span></div>
+
+  <nav class="glass-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <div class="logo-badge"></div>
+        <div class="logo-text">
+          <strong data-t="brand.full">Al Jazira Club</strong>
+          <span data-t="brand.tag">Official Store</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="tablist" aria-label="Language">
+          <button class="lang-toggle-btn" data-lang="en" type="button">EN</button>
+          <button class="lang-toggle-btn" data-lang="ar" type="button">ع</button>
+        </div>
+        <div class="kit-theme glass-pill" role="tablist" aria-label="Kit theme">
+          <button class="kit-theme-btn active" data-mode="home" data-label="H" title="Home Kit" type="button"></button>
+          <button class="kit-theme-btn" data-mode="away" data-label="A" title="Away Kit" type="button"></button>
+          <button class="kit-theme-btn" data-mode="third" data-label="3" title="Third Kit" type="button"></button>
+        </div>
+        <a class="nav-link" href="all-products.html" data-t="nav.all">All Products</a>
+        <a class="nav-link primary" href="index.html" data-t="nav.continue">Continue Shopping</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="checkout-shell">
+      <section class="checkout-main" id="checkoutMain">
+        <div class="checkout-kicker" data-t="co.kicker">Matchday Delivery</div>
+        <h1 class="checkout-title"><span data-t="co.title.1">Secure Your</span><br /><span data-t="co.title.2">Order.</span></h1>
+        <p class="checkout-sub" data-t="co.sub">This is a high-fidelity checkout prototype. It keeps the same editorial storefront feel, but gives the bag a real final step: order summary, delivery details, payment choice, and an order confirmation that clears the cart.</p>
+
+        <form class="checkout-form" id="checkoutForm">
+          <div class="form-section">
+            <h2 class="form-title" data-t="co.contact">Contact</h2>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="email" data-t="co.email">Email</label>
+                <input class="form-input" id="email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="phone" data-t="co.phone">Phone</label>
+                <input class="form-input" id="phone" type="tel" placeholder="+971 50 000 0000" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-title" data-t="co.delivery">Delivery</h2>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="firstName" data-t="co.firstname">First Name</label>
+                <input class="form-input" id="firstName" type="text" placeholder="Tobias" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="lastName" data-t="co.lastname">Last Name</label>
+                <input class="form-input" id="lastName" type="text" placeholder="Lundgren" required />
+              </div>
+              <div class="form-field form-row-full">
+                <label class="form-label" for="address" data-t="co.address">Street Address</label>
+                <input class="form-input" id="address" type="text" placeholder="Saadiyat Beach Villas, Street 7, Villa 12" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="city" data-t="co.city">City</label>
+                <input class="form-input" id="city" type="text" placeholder="Abu Dhabi" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="area" data-t="co.area">Area</label>
+                <input class="form-input" id="area" type="text" placeholder="Saadiyat Island" />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="deliveryWindow" data-t="co.window">Delivery Window</label>
+                <select class="form-select" id="deliveryWindow">
+                  <option data-t="co.window.nextday">Next day</option>
+                  <option data-t="co.window.2-3">2–3 days</option>
+                  <option data-t="co.window.evening">Evening delivery</option>
+                  <option data-t="co.window.matchday">Matchday pickup</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="deliveryNote" data-t="co.note">Delivery Note</label>
+                <input class="form-input" id="deliveryNote" type="text" placeholder="Guard gate call ahead" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-title" data-t="co.payment">Payment</h2>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="paymentMethod" data-t="co.method">Method</label>
+                <select class="form-select" id="paymentMethod">
+                  <option>Card ending in 4242</option>
+                  <option>Apple Pay</option>
+                  <option>Cash on Delivery</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="promoCode" data-t="co.promo">Promo Code</label>
+                <input class="form-input" id="promoCode" type="text" placeholder="AHLAN10" />
+              </div>
+              <div class="form-field form-row-full">
+                <label class="form-label" for="orderNote" data-t="co.ordernote">Order Note</label>
+                <textarea class="form-textarea" id="orderNote" placeholder="Optional: delivery instructions, gift message, or customisation note"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <button class="checkout-submit" id="placeOrderBtn" type="submit"><span data-t="co.submit">Place Prototype Order</span> <span data-t-arrow>→</span></button>
+        </form>
+      </section>
+
+      <aside class="checkout-summary" id="checkoutSummary">
+        <div class="summary-title" data-t="co.sum">Order Summary</div>
+        <div class="summary-items" id="summaryItems"></div>
+        <div class="summary-totals">
+          <div class="summary-row"><span data-t="co.sub.total">Subtotal</span><span id="subtotalValue">AED 0</span></div>
+          <div class="summary-row"><span data-t="co.shipping">Shipping</span><span id="shippingValue">AED 0</span></div>
+          <div class="summary-row"><span data-t="co.custom">Personalised items</span><span id="customValue">None</span></div>
+          <div class="summary-row"><strong data-t="co.total">Total</strong><strong id="totalValue">AED 0</strong></div>
+        </div>
+        <div class="summary-pill" id="summaryPill">0 <span data-t="co.inbag">items in bag</span></div>
+      </aside>
+    </div>
+
+    <section class="success-card" id="successCard">
+      <h2 data-t="co.placed.title">Order Placed.</h2>
+      <p data-t="co.placed.body">Your prototype order has been submitted and the bag has been cleared. In a live build, this is where we'd hand off to payment confirmation, email receipt, and fulfilment tracking.</p>
+      <div class="success-actions">
+        <a class="action-btn primary" href="index.html" data-t="co.back">Back to Home</a>
+        <a class="action-btn" href="all-products.html" data-t="co.keep">Keep Shopping</a>
+      </div>
+    </section>
+
+    <section class="empty-card" id="emptyCard">
+      <h2 data-t="co.empty.title">Your Bag Is Empty.</h2>
+      <p data-t="co.empty.body">Add a few kits, accessories, or a personalised shirt before heading to checkout. The cart now persists across the storefront, so you can build an order from the homepage, product page, and full catalogue.</p>
+      <div class="empty-actions">
+        <a class="action-btn primary" href="index.html" data-t="co.home">Go to Homepage</a>
+        <a class="action-btn" href="all-products.html" data-t="co.browse">Browse All Products</a>
+      </div>
+    </section>
+
+    <section class="help-section">
+      <article class="help-card" id="faq">
+        <h3 data-t="co.help.faq">FAQ</h3>
+        <p data-t="co.help.faq.body">This prototype focuses on end-to-end storefront flow: persistent bag, product detail, catalogue filtering, and checkout confirmation. It is intentionally static and local-first.</p>
+      </article>
+      <article class="help-card" id="shipping">
+        <h3 data-t="co.help.ship">Shipping</h3>
+        <p data-t="co.help.ship.body">Free delivery across the UAE on orders above AED 150. Orders below that threshold use a flat AED 20 shipping fee in this prototype.</p>
+      </article>
+      <article class="help-card" id="returns">
+        <h3 data-t="co.help.ret">Returns</h3>
+        <p data-t="co.help.ret.body">Standard items can be returned within 14 days. Personalised shirts are treated as final sale unless there is a production fault.</p>
+      </article>
+      <article class="help-card" id="size-guide">
+        <h3 data-t="co.help.size">Size Guide</h3>
+        <p data-t="co.help.size.body">Replica tops fit true to size. Trainingwear is slightly more athletic. If you are between sizes, choose the larger size for a relaxed matchday fit.</p>
+      </article>
+      <article class="help-card" id="contact">
+        <h3 data-t="co.help.contact">Contact</h3>
+        <p data-t="co.help.contact.body">Need help before placing the order? Use the product page to confirm sizing, then come back here when the bag is ready.</p>
+      </article>
+    </section>
+  </main>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const CART_STORAGE_KEY = 'ajc-cart-v1';
+    const APPAREL_CATEGORIES = new Set(['Match Kit', 'Training', 'Kids', 'Lifestyle']);
+    let toastTimer;
+
+    function getDefaultSize(category) {
+      return APPAREL_CATEGORIES.has(category) ? 'M' : 'One Size';
+    }
+
+    function normalizeCartItem(item) {
+      return {
+        ...item,
+        size: item.custom ? (item.size || '') : (item.size || getDefaultSize(item.category)),
+        qty: Math.max(1, Number(item.qty) || 1),
+      };
+    }
+
+    function loadCart() {
+      try {
+        const raw = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '[]');
+        return Array.isArray(raw) ? raw.map(normalizeCartItem) : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      try {
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+      } catch (error) {
+        // Ignore storage write errors in the static prototype.
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+
+    function formatMoney(value) {
+      return `AED ${value.toLocaleString()}`;
+    }
+
+    function renderCheckout() {
+      const cart = loadCart();
+      const emptyCard = document.getElementById('emptyCard');
+      const successCard = document.getElementById('successCard');
+      const checkoutMain = document.getElementById('checkoutMain');
+      const checkoutSummary = document.getElementById('checkoutSummary');
+      const summaryItems = document.getElementById('summaryItems');
+
+      successCard.classList.remove('show');
+
+      if (cart.length === 0) {
+        checkoutMain.style.display = 'none';
+        checkoutSummary.style.display = 'none';
+        emptyCard.classList.add('show');
+        return;
+      }
+
+      emptyCard.classList.remove('show');
+      checkoutMain.style.display = '';
+      checkoutSummary.style.display = '';
+
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const customisationCount = cart.filter(item => item.custom).reduce((sum, item) => sum + item.qty, 0);
+      const shipping = subtotal >= 150 ? 0 : 20;
+      const total = subtotal + shipping;
+      const itemCount = cart.reduce((sum, item) => sum + item.qty, 0);
+
+      summaryItems.innerHTML = cart.map((item) => `
+        <div class="summary-item">
+          <img src="${item.img}" alt="${item.name}" />
+          <div>
+            <div class="summary-item-name">${item.name}</div>
+            <div class="summary-item-meta">${[item.category, item.size].filter(Boolean).join(' · ')} · Qty ${item.qty}</div>
+          </div>
+          <div class="summary-item-price">${formatMoney(item.price * item.qty)}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('subtotalValue').textContent = formatMoney(subtotal);
+      document.getElementById('shippingValue').textContent = shipping === 0 ? 'Free' : formatMoney(shipping);
+      document.getElementById('customValue').textContent = customisationCount ? `${customisationCount} item${customisationCount === 1 ? '' : 's'}` : 'None';
+      document.getElementById('totalValue').textContent = formatMoney(total);
+      document.getElementById('summaryPill').textContent = `${itemCount} item${itemCount === 1 ? '' : 's'} in bag`;
+    }
+
+    document.getElementById('checkoutForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const firstName = document.getElementById('firstName').value.trim();
+      if (!email.includes('@') || !firstName) {
+        showToast('Please complete the required checkout fields');
+        return;
+      }
+
+      saveCart([]);
+      renderCheckout();
+      document.getElementById('emptyCard').classList.remove('show');
+      document.getElementById('checkoutMain').style.display = 'none';
+      document.getElementById('checkoutSummary').style.display = 'none';
+      document.getElementById('successCard').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast('Prototype order submitted');
+    });
+
+    (function initKitTheme() {
+      const root = document.documentElement;
+      const buttons = document.querySelectorAll('.kit-theme-btn');
+      const saved = localStorage.getItem('ajc-theme') || 'home';
+      const apply = (mode) => {
+        root.setAttribute('data-theme', mode);
+        buttons.forEach((button) => button.classList.toggle('active', button.dataset.mode === mode));
+        localStorage.setItem('ajc-theme', mode);
+      };
+      apply(saved);
+      buttons.forEach((button) => button.addEventListener('click', () => apply(button.dataset.mode)));
+    })();
+
+    renderCheckout();
+
+    window.addEventListener('storage', (event) => {
+      if (event.key !== CART_STORAGE_KEY) return;
+      renderCheckout();
+    });
+
+    // Re-apply language when user toggles EN/AR
+    window.addEventListener('ajc-lang-change', () => {
+      if (window.AJCLang) window.AJCLang.apply(window.AJCLang.current());
+    });
+
+    // ── SCROLL-TO-TOP GLASS CHIP ──
+    (function initScrollTop() {
+      const btn = document.getElementById('scrollTop');
+      if (!btn) return;
+      const onScroll = () => btn.classList.toggle('visible', window.scrollY > 480);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  </script>
+</body>
+</html>

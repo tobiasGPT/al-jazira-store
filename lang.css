@@ -1,0 +1,226 @@
+/* ─── Al Jazira Store — Bilingual / RTL styles ─── */
+
+/* Arabic font loads via @import so it's available on every page that includes lang.css */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+html[data-lang="ar"],
+html[dir="rtl"] {
+  /* Swap font family to Tajawal for Arabic; keep Barlow Condensed for display numerals/English brand marks */
+  --font: 'Tajawal', 'Barlow', sans-serif;
+  --font-display: 'Tajawal', 'Barlow Condensed', 'Barlow', sans-serif;
+}
+
+/* Language toggle pill (matches glass-pill styling) */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  gap: 2px;
+  margin-right: 6px;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(18px) saturate(1.8);
+  -webkit-backdrop-filter: blur(18px) saturate(1.8);
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 100px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    inset 0 -1px 1px rgba(0,0,0,0.06),
+    0 6px 20px -8px rgba(30,27,26,0.14);
+}
+html[data-theme="away"] .lang-toggle {
+  background: rgba(21,18,15,0.5);
+  border-color: rgba(176,135,89,0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(244,238,229,0.18),
+    inset 0 -1px 1px rgba(0,0,0,0.5),
+    0 6px 20px -8px rgba(0,0,0,0.5);
+}
+html[data-theme="third"] .lang-toggle {
+  background: rgba(236,230,217,0.55);
+  border-color: rgba(176,135,89,0.35);
+}
+.lang-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 12px;
+  min-width: 30px;
+  height: 26px;
+  border-radius: 100px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: rgba(30,27,26,0.55);
+  transition: background 0.2s, color 0.2s;
+}
+.lang-toggle-btn[data-lang="ar"] { font-family: 'Tajawal', sans-serif; font-size: 13px; letter-spacing: 0; }
+html[data-theme="away"] .lang-toggle-btn { color: rgba(244,238,229,0.55); }
+html[data-theme="third"] .lang-toggle-btn { color: rgba(122,109,82,1); }
+.lang-toggle-btn.active {
+  background: #1E1B1A;
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    inset 0 -1px 0 rgba(0,0,0,0.3);
+}
+html[data-theme="away"] .lang-toggle-btn.active {
+  background: var(--bronze);
+  color: #1E1B1A;
+}
+html[data-theme="third"] .lang-toggle-btn.active {
+  background: #2a2216;
+  color: #ece6d9;
+}
+
+/* ─── RTL adjustments ─── */
+html[dir="rtl"] {
+  /* Line-height tends to be tight on Barlow-Condensed-sized Tajawal; loosen */
+  line-height: 1.35;
+}
+
+/* Hero content sits on the right edge in RTL */
+html[dir="rtl"] .hero-content {
+  padding: 0 80px 0 0;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+html[dir="rtl"] .hero-kicker::before { order: 1; }
+html[dir="rtl"] .hero-kicker { flex-direction: row-reverse; }
+html[dir="rtl"] .hero-stats {
+  right: auto;
+  left: 60px;
+}
+html[dir="rtl"] .hero-stat { text-align: left; }
+
+/* Hero overlay gradient flip */
+html[dir="rtl"] .hero-overlay {
+  background:
+    linear-gradient(260deg, rgba(15,13,12,0.92) 0%, rgba(15,13,12,0.55) 35%, rgba(15,13,12,0.05) 60%, rgba(15,13,12,0.35) 100%),
+    linear-gradient(180deg, rgba(15,13,12,0.15) 0%, rgba(15,13,12,0) 30%, rgba(15,13,12,0) 70%, rgba(15,13,12,0.65) 100%);
+}
+
+/* Section kicker red tick flips to the right edge */
+html[dir="rtl"] .section-header::before { left: auto; right: 0; }
+html[dir="rtl"] .section-kicker { text-align: right; }
+
+/* Kicker horizontal rules (section, hero, editorial, customiser, page) — flip the leading line */
+html[dir="rtl"] .hero-kicker::before,
+html[dir="rtl"] .editorial-kicker::before,
+html[dir="rtl"] .customiser-kicker::before,
+html[dir="rtl"] .page-hero-kicker::before,
+html[dir="rtl"] .customiser-copy .customiser-kicker::before {
+  /* Swap to trailing line (already via flex direction but set margin) */
+}
+html[dir="rtl"] .hero-kicker,
+html[dir="rtl"] .editorial-kicker,
+html[dir="rtl"] .customiser-kicker,
+html[dir="rtl"] .page-hero-kicker,
+html[dir="rtl"] .customiser-copy .customiser-kicker {
+  flex-direction: row-reverse;
+}
+
+/* Editorial banner content sits on the right */
+html[dir="rtl"] .editorial-banner-content { text-align: right; margin-left: auto; margin-right: 0; }
+html[dir="rtl"] .editorial-banner-overlay {
+  background: linear-gradient(265deg, rgba(15,13,12,0.88) 0%, rgba(15,13,12,0.45) 45%, rgba(15,13,12,0) 75%);
+}
+
+/* Editorial link arrow flips (set via inline char or ::after) */
+html[dir="rtl"] .editorial-link::after { content: '←'; }
+
+/* Buttons with ::after arrow */
+html[dir="rtl"] .btn-gold::after,
+html[dir="rtl"] .btn-glass::after,
+html[dir="rtl"] .customiser-cta::after,
+html[dir="rtl"] .checkout-submit::after {
+  content: '←';
+}
+
+/* Link-all arrows (text includes → character — handled by data-t-arrow) */
+html[dir="rtl"] .link-all { direction: rtl; }
+
+/* Product card wishlist top-right becomes top-left */
+html[dir="rtl"] .product-wishlist { left: 14px; right: auto; }
+html[dir="rtl"] .product-badge { right: 14px; left: auto; }
+
+/* Announcement separator spacing ok; tighten letter-spacing for Tajawal */
+html[data-lang="ar"] .announcement { letter-spacing: 0.5px; }
+
+/* Section kicker arrow position */
+html[dir="rtl"] .section-kicker { letter-spacing: 1.5px; }
+
+/* Forms — inputs naturally flip. Align labels to the right. */
+html[dir="rtl"] .form-label { text-align: right; }
+html[dir="rtl"] .form-input,
+html[dir="rtl"] .form-textarea,
+html[dir="rtl"] .form-select,
+html[dir="rtl"] .customiser-input,
+html[dir="rtl"] .cust-field input,
+html[dir="rtl"] .newsletter-input {
+  text-align: right;
+}
+
+/* Keep Latin numerals readable in prices even in Arabic */
+.price-current, .price-original, .price-save,
+.detail-price-current, .detail-price-original,
+.hero-stat-num, .cust-total strong, .customiser-price strong,
+#subtotalValue, #shippingValue, #customValue, #totalValue,
+#summaryPill {
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif !important;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Sizes stay Latin */
+.cust-sizes button, .size-btn {
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif !important;
+}
+
+/* Jersey SVG number stays Latin condensed */
+.cust-svg text {
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif !important;
+}
+
+/* Footer in RTL */
+html[dir="rtl"] .footer-top { direction: rtl; }
+html[dir="rtl"] .footer-tagline { text-align: right; }
+
+/* Nav-cats scroll naturally; make sure directional text looks right */
+html[dir="rtl"] .nav-cats { direction: rtl; }
+
+/* Marquee scrolls left-to-right in RTL (subtle but correct) */
+html[dir="rtl"] .marquee-track {
+  animation-direction: reverse;
+}
+
+/* Scroll-top stays in corner; unaffected */
+
+/* Filter bar on all-products */
+html[dir="rtl"] .filter-bar-inner { direction: rtl; }
+
+/* Customiser preview stays centered — view toggle fine */
+html[dir="rtl"] .customiser-inner { direction: rtl; }
+
+/* Hero kicker layout — make the leading hairline visually trail */
+html[dir="rtl"] .hero-kicker::before,
+html[dir="rtl"] .editorial-kicker::before,
+html[dir="rtl"] .customiser-kicker::before,
+html[dir="rtl"] .page-hero-kicker::before {
+  transform: none;
+}
+
+/* Arabic comfortable font weight on big condensed headlines */
+html[data-lang="ar"] .hero-title,
+html[data-lang="ar"] .page-hero-title,
+html[data-lang="ar"] .section-title,
+html[data-lang="ar"] .newsletter-title,
+html[data-lang="ar"] .editorial-title,
+html[data-lang="ar"] .customiser-title,
+html[data-lang="ar"] .related-title,
+html[data-lang="ar"] .product-detail-name,
+html[data-lang="ar"] .checkout-title {
+  letter-spacing: 0;
+  line-height: 1.05;
+}
