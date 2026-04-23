@@ -132,6 +132,13 @@
                              ar: 'أعمق. أحدّ. مصمّم حول الشعار. قميص 25/26 الاحتياطي يأخذ نصف قرن من عراقة الجزيرة ويعيد تقديمه لعصر جديد — هندسة أديداس، بلونَي أبوظبي الأحمر والأسود.' },
     'ed.cta':              { en: 'Shop the Story',               ar: 'تسوّق القصة' },
 
+    // ── COLLECTION BANNERS ──
+    'col.matchkit.tag':    { en: 'On the Pitch',                 ar: 'على أرض الملعب' },
+    'col.matchkit.title':  { en: 'Match Kit Collection',         ar: 'مجموعة طقم المباراة' },
+    'col.training.tag':    { en: 'Stay Ready',                   ar: 'كن مستعداً' },
+    'col.training.title':  { en: 'Training Collection',          ar: 'مجموعة التدريب' },
+    'col.shopnow':         { en: 'Shop Now →',                   ar: 'تسوّق الآن ←' },
+
     // ── CUSTOMISER ──
     'cust.kicker':         { en: 'Made for You',                 ar: 'صُنع لك' },
     'cust.title.1':        { en: 'Your Name.',                   ar: 'اسمك.' },

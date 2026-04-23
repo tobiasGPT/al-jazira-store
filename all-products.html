@@ -1066,7 +1066,7 @@
   <div class="cart-overlay" id="cartOverlay"></div>
   <div class="cart-drawer glass-drawer" id="cartDrawer">
     <div class="cart-drawer-header">
-      <div class="cart-drawer-title">Your Bag <span id="cartHeaderCount" style="color:var(--ink-muted);font-weight:500;font-size:14px;"></span></div>
+      <div class="cart-drawer-title"><span data-t="cart.title">Your Bag</span> <span id="cartHeaderCount" style="color:var(--ink-muted);font-weight:500;font-size:14px;"></span></div>
       <button class="cart-close-btn" id="cartCloseBtn" type="button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -1074,12 +1074,12 @@
     <div class="cart-items" id="cartItems">
       <div class="cart-empty">
         <div class="cart-empty-icon">🛍️</div>
-        <p>Your bag is empty</p>
+        <p data-t="cart.empty">Your bag is empty</p>
       </div>
     </div>
     <div class="cart-footer" id="cartFooter" style="display:none;">
       <div class="cart-subtotal">
-        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-subtotal-label" data-t="cart.subtotal">Subtotal</span>
         <span class="cart-subtotal-amount" id="cartSubtotal">AED 0</span>
       </div>
       <button class="cart-checkout-btn" type="button">Proceed to Checkout →</button>
@@ -1190,7 +1190,8 @@
       const footerEl = document.getElementById('cartFooter');
 
       if (cart.length === 0) {
-        itemsEl.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍️</div><p>Your bag is empty</p></div>`;
+        itemsEl.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍️</div><p data-t="cart.empty">Your bag is empty</p></div>`;
+        if (window.AJCLang) window.AJCLang.apply(window.AJCLang.current());
         footerEl.style.display = 'none';
         return;
       }
